@@ -3,9 +3,7 @@ package ru.netology.web.test;
 import lombok.val;
 import org.junit.jupiter.api.Test;
 import ru.netology.web.data.DataHelper;
-import ru.netology.web.page.LoginPageV1;
-import ru.netology.web.page.LoginPageV2;
-import ru.netology.web.page.LoginPageV3;
+import ru.netology.web.page.*;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -19,6 +17,9 @@ class MoneyTransferTest {
       val verificationPage = loginPage.validLogin(authInfo);
       val verificationCode = DataHelper.getVerificationCodeFor(authInfo);
       verificationPage.validVerify(verificationCode);
+      val transferPage = new TransferPage();
+      val firstCardNumber = DataHelper.getOtherCardNumber(authInfo);
+      transferPage.firstCard(firstCardNumber);
     }
 
   @Test
