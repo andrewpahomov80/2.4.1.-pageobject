@@ -29,11 +29,7 @@ public class DataHelper {
     private String cardNum;
   }
 
-  public static Cards getCardNumber(AuthInfo authInfo) {
-    return new Cards("5559 0000 0000 0001");
-  }
+  public static Cards getFirstCardNumber() { return new Cards("5559 0000 0000 0001"); }
 
-  public static Cards getOtherCardNumber(AuthInfo original) {
-    return new Cards("5559 0000 0000 0002");
-  }
+  public static Cards getSecondCardNumber() { return new Cards("5559 0000 0000 0002"); }
 }

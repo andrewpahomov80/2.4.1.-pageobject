@@ -9,16 +9,14 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class TransferPage {
     private SelenideElement heading = $(byText("Пополнение карты"));
-    private SelenideElement buttonFirstCard = $("[data-test-id=92df3f1c-a033-48e6-8390-206f6b1f56c0] [class=button__text]");
-    private SelenideElement amount = $("[data-test-id=amount]");
-    private SelenideElement from = $("[data-test-id=from]");
+    private SelenideElement amount = $("[data-test-id=amount] [class=input__control]");
+    private SelenideElement from = $("[data-test-id=from] [class=input__control]");
     private SelenideElement actionTransfer = $("[data-test-id=action-transfer]");
 
     public TransferPage() { heading.shouldBe(visible); }
 
-    public DashboardPage firstCard(DataHelper.Cards cards) {
-        buttonFirstCard.click();
-        amount.setValue("250");
+    public DashboardPage transfer(int value,DataHelper.Cards cards) {
+        amount.setValue(String.valueOf(value));
         from.setValue(cards.getCardNum());
         actionTransfer.click();
         return new DashboardPage();
