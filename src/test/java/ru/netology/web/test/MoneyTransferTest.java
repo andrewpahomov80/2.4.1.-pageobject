@@ -66,13 +66,7 @@ class MoneyTransferTest {
     val transferPageSecondCard = dashboardPage.secondCard();
     val value = 50000;
     val firstCardNumber = DataHelper.getFirstCardNumber();
-    transferPageSecondCard.transfer(value, firstCardNumber);
-    val firstCardBalanceAfterTransfer = dashboardPage.getFirstCardBalance();
-    val secondCardBalanceAfterTransfer = dashboardPage.getSecondCardBalance();
-    val resultFirstCardBalance = firstCardBalance - firstCardBalanceAfterTransfer;
-    val resultSecondCardBalance = secondCardBalanceAfterTransfer - secondCardBalance;
-    Assertions.assertEquals(resultFirstCardBalance, value);
-    Assertions.assertEquals(resultSecondCardBalance, value);
+    transferPageSecondCard.overLimit(value, firstCardNumber);
   }
 }
 
